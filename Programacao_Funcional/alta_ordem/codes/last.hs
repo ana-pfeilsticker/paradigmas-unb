@@ -1,0 +1,1 @@
+    ghci> last "ABC"                    --  'C'

@@ -1,0 +1,65 @@
+\section{Recursão}
+
+\begin{frame}[fragile]{Recursão}
+
+    \begin{itemize}
+        \item A recursão diz respeito a definição de uma função em termos de si mesma
+
+        \item Ao contrário de outras notações, o cálculo $\lambda$ não permite esta definição
+            diretamente, uma vez que os termos-$\lambda$ são anônimos
+
+        \item Uma maneira de contornar isso é utilizar uma expressão-$\lambda$ que receba a 
+            si mesma como argumento
+
+        \item Além disso, é preciso lidar com os dois aspectos fundamentais de uma função
+            recursiva: o(s) caso(s) base(s) e a chamada recursiva
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]{Estrutura básica da recursão}
+
+    \begin{huge}
+    \[
+        \gamma(x) =  \left\lbrace \begin{array}{ll}
+                    g(x), & \mbox{se}\ P(x), \\
+                    h(x, \gamma), & \mbox{caso contrário}
+                \end{array} \right.
+    \]
+    \end{huge}
+
+    \begin{itemize}
+        \item $P(x)$ é um predicado que retorna verdadeiro se $x$ é o valor que caracteriza um
+            caso base
+
+        \item Se $P(x)$ for verdadeiro, o valor de $\gamma$ em $x$ será dado pela função $g$
+
+        \item Caso contrário, $\gamma(x)$ será dado por $h(x, \gamma)$, onde $h$ é uma função 
+            que depende de $x$ e de $\gamma$
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]{Representação da estrutura básica da recursão no cálculo-$\lambda$}
+
+    \begin{huge}
+    \[
+        \Gamma\equiv (\lambda \gamma x.(Px)(gx)(h))
+    \]
+    \end{huge}
+
+    \begin{itemize}
+        \item Observe que na definição da função recursiva $\Gamma$ é utilizado o 
+            termo-$\lambda$ $I_F$
+
+        \item Se o predicado $(Px)$ retornar verdadeiro, o retorno será o primeiro parâmetro 
+            $(gx)$, que corresponde ao valor de $\Gamma$ para o caso base
+
+        \item Se falso, será avaliada a função $h = h(x, \gamma)$
+
+        \item Não há garantias, contudo, que $\Gamma\equiv \gamma$, pois no cálculo $\lambda$ 
+            os termos são anônimos
+
+        \item É preciso, portanto, definir um termo que garanta esta equivalência
+    \end{itemize}
+\end{frame}
